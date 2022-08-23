@@ -1,17 +1,18 @@
 var drumBtns = document.querySelectorAll(".drum");
 
+//Mouse clicks
 drumBtns.forEach(element => { element.addEventListener("click", function () {   
     var btnInnerHTML = element.innerHTML;
     drumCheck(btnInnerHTML);
     });    
 });
 
+//Keyboard inputs
 document.addEventListener("keydown", function (event) {
-    console.log(event);
-    drumCheck(event.key);
-    
+    drumCheck(event.key);   
 });
-    
+
+//Creating audio    
 function drumCheck(e) {
     switch (e) {
         case "w":
