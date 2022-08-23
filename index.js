@@ -3,18 +3,20 @@ var drumBtns = document.querySelectorAll(".drum");
 //Mouse clicks
 drumBtns.forEach(element => { element.addEventListener("click", function () {   
     var btnInnerHTML = element.innerHTML;
-    drumCheck(btnInnerHTML);
+    makeAudio(btnInnerHTML);
+    makeAnimation(btnInnerHTML);
     });    
 });
 
 //Keyboard inputs
 document.addEventListener("keydown", function (event) {
-    drumCheck(event.key);   
+    makeAudio(event.key);
+    makeAnimation(event.key);   
 });
 
 //Creating audio    
-function drumCheck(e) {
-    switch (e) {
+function makeAudio(key) {
+    switch (key) {
         case "w":
             var tom1 = new Audio("sounds/tom-1.mp3");
             tom1.play();
@@ -55,3 +57,12 @@ function drumCheck(e) {
     };
     
 };
+
+//Creating animation
+function makeAnimation(key){
+    var activeButton = document.querySelector("."+key);
+    activeButton.classList.add("pressed");
+    setTimeout(() => {
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
