@@ -1,9 +1,19 @@
 var drumBtns = document.querySelectorAll(".drum");
 
-drumBtns.forEach(element => { element.addEventListener("click", function () {
-    
+drumBtns.forEach(element => { element.addEventListener("click", function () {   
     var btnInnerHTML = element.innerHTML;
-    switch (btnInnerHTML) {
+    drumCheck(btnInnerHTML);
+    });    
+});
+
+document.addEventListener("keydown", function (event) {
+    console.log(event);
+    drumCheck(event.key);
+    
+});
+    
+function drumCheck(e) {
+    switch (e) {
         case "w":
             var tom1 = new Audio("sounds/tom-1.mp3");
             tom1.play();
@@ -41,10 +51,6 @@ drumBtns.forEach(element => { element.addEventListener("click", function () {
 
         default:
             break;
-    }
-});    
-});
-
-// var audio = new Audio("/sounds/tom-1.mp3")
-//     audio.play();
+    };
     
+};
